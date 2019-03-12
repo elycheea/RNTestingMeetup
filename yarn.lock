@@ -4742,7 +4742,7 @@ pretty-format@24.0.0-alpha.6:
     ansi-regex "^4.0.0"
     ansi-styles "^3.2.0"
 
-pretty-format@^24.5.0:
+pretty-format@^24.0.0, pretty-format@^24.5.0:
   version "24.5.0"
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-24.5.0.tgz#cc69a0281a62cd7242633fc135d6930cd889822d"
   integrity sha512-/3RuSghukCf8Riu5Ncve0iI+BzVkbRU5EeUoArKARZobREycuH5O4waxvaNIloEXdb0qwgmEAed5vTpX1HNROQ==
@@ -4870,6 +4870,13 @@ react-is@^16.8.1, react-is@^16.8.3, react-is@^16.8.4:
   version "16.8.4"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.4.tgz#90f336a68c3a29a096a3d648ab80e87ec61482a2"
   integrity sha512-PVadd+WaUDOAciICm/J1waJaSvgq+4rHE/K70j0PFqKhkTBsPv/82UGQJNXAngz1fOQLLxI6z1sEDmJDQhCTAA==
+
+react-native-testing-library@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-testing-library/-/react-native-testing-library-1.6.0.tgz#857f5cddea26f43ee8d942779d98209fe355f66e"
+  integrity sha512-fUdwLp+PqTOAIWtOwa3D5+KnUiPEj6qAnXrtZKQji+w5hnn7YHNnf1YYQad3H/GP8mJq5Y8GG/KBKnBXpq7WxA==
+  dependencies:
+    pretty-format "^24.0.0"
 
 react-native@0.59.0:
   version "0.59.0"
