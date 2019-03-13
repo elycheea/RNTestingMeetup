@@ -1,63 +1,53 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 
 const without = (array, index) => (
   [...array.slice(0, index), ...array.slice(index+1)]
 );
 
-export default class TodoList extends Component {
-  state = {
-    todos: this.props.todos ? [...this.props.todos] : [],
-    newTodoName: '',
-  }
+const TodoList = ({ todos: initialTodos }) => {
+  const [todos, setTodos] = useState(initialTodos ? [...initialTodos] : []);
+  const [newTodoName, setNewTodoName] = useState('');
 
-  handleChangeText = newTodoName => this.setState({ newTodoName });
-
-  handleAddTodo = () => {
-    if (this.state.newTodoName === '') {
+  const handleAddTodo = () => {
+    if (newTodoName === '') {
       return;
     }
 
-    this.setState(({ todos, newTodoName }) => ({
-      todos: [...todos, newTodoName],
-      newTodoName: '',
-    }));
-  }
+    setTodos([...todos, newTodoName]);
+    setNewTodoName('');
+  };
 
-  handleDeleteTodo = index => () => {
-    let { todos } = this.state;
-    this.setState({ todos: without(todos, index) });
-  }
+  const handleDeleteTodo = index => () => {
+    setTodos(without(todos, index));
+  };
 
-  render() {
-    const { todos, newTodoName } = this.state;
-    return (
-      <View>
-        <TextInput
-          testID="todoName"
-          value={newTodoName}
-          onChangeText={this.handleChangeText}
-          style={styles.input}
-        />
-        <Button
-          testID="addTodoButton"
-          title="Add"
-          onPress={this.handleAddTodo}
-        />
-        {todos.map((todo, index) => (
-          <View key={todo} style={styles.todoRow}>
-            <Text>{todo}</Text>
-            <Button
-              testID="deleteTodoButton"
-              title="Delete"
-              onPress={this.handleDeleteTodo(index)}
-            />
-          </View>
-        ))}
-      </View>
-    );
-  }
-}
+  return (
+    <View>
+      <TextInput
+        testID="todoName"
+        value={newTodoName}
+        onChangeText={setNewTodoName}
+        style={styles.input}
+      />
+      <Button
+        testID="addTodoButton"
+        title="Add"
+        onPress={handleAddTodo}
+      />
+      {todos.map((todo, index) => (
+        <View key={todo} style={styles.todoRow}>
+          <Text>{todo}</Text>
+          <Button
+            testID="deleteTodoButton"
+            title="Delete"
+            onPress={handleDeleteTodo(index)}
+          />
+        </View>
+      ))}
+    </View>
+  );
+};
 
 const styles = {
   input: {
@@ -71,3 +61,5 @@ const styles = {
     alignItems: 'center',
   },
 };
+
+export default TodoList;
